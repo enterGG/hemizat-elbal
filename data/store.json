@@ -1,0 +1,231 @@
+{
+  "settings": {
+    "storeName": "هميزات البال",
+    "tagline": "seller",
+    "logoUrl": "/branding/logo.jpg",
+    "ownerEmail": "issamww2@gmail.com",
+    "ownerPhone": "0629453481",
+    "whatsapp": "0629453481",
+    "webhookUrl": "",
+    "callmebotKey": "",
+    "adminPassword": "hemizat2026",
+    "smtp": {
+      "host": "",
+      "port": 587,
+      "user": "",
+      "pass": "",
+      "from": ""
+    },
+    "orderSeq": 2
+  },
+  "products": [
+    {
+      "id": "91c6100f-7ea4-429d-890c-c04d273cd4c7",
+      "slug": "ثب",
+      "category": "bags",
+      "name": "ثب",
+      "brand": "سيب",
+      "model": "ربس",
+      "size": "52",
+      "condition": "51",
+      "price": 500,
+      "compareAtPrice": 1000,
+      "stock": 1,
+      "description": "نكم",
+      "images": [
+        {
+          "url": "/uploads/1794084539689-y3aqfo.jpeg",
+          "alt": "قطعة — صورة 1"
+        }
+      ],
+      "videos": [],
+      "seo": {
+        "title": "سيب ربس ساك مستعمل أصلي | هميزات البال",
+        "description": "ثب، من سيب، موديل ربس، المقاس 52، الحالة 51. ساك مستعمل أصلي قطعة أصلية مستعملة منتقاة بعناية من هميزات البال في المغرب. نكم",
+        "keywords": "سيب, ربس, ثب, ساك مستعمل أصلي, سيكان مستعملة, هميزات البال, ماركات أصلية, المغرب, كازا"
+      },
+      "status": "active",
+      "createdAt": "2026-11-07T20:53:58.080Z",
+      "updatedAt": "2026-11-07T20:53:58.080Z"
+    },
+    {
+      "id": "d7af919a-0429-494c-9b24-6fbaae962f64",
+      "slug": "صاك",
+      "category": "bags",
+      "name": "صاك",
+      "brand": "صاك",
+      "model": "ص",
+      "size": "21",
+      "condition": "85",
+      "price": 300,
+      "compareAtPrice": 500,
+      "stock": 1,
+      "description": "صاط",
+      "images": [
+        {
+          "url": "/uploads/1794084518012-5uiqes.jpeg",
+          "alt": "صاك — صورة 1"
+        }
+      ],
+      "videos": [],
+      "seo": {
+        "title": "صاك ص ساك مستعمل أصلي | هميزات البال",
+        "description": "صاك، من صاك، موديل ص، المقاس 21، الحالة 85. ساك مستعمل أصلي قطعة أصلية مستعملة منتقاة بعناية من هميزات البال في المغرب. صاط",
+        "keywords": "صاك, ص, صاك, ساك مستعمل أصلي, سيكان مستعملة, هميزات البال, ماركات أصلية, المغرب, كازا"
+      },
+      "status": "active",
+      "createdAt": "2026-11-07T20:48:41.218Z",
+      "updatedAt": "2026-11-07T20:48:41.218Z"
+    },
+    {
+      "id": "p-jordan-chicago",
+      "slug": "nike-air-jordan-1-high-chicago",
+      "category": "sneakers",
+      "name": "Nike Air Jordan 1 High Chicago",
+      "brand": "Nike",
+      "model": "Air Jordan 1 Retro High OG Chicago",
+      "size": "42 EU",
+      "condition": "8.5/10 — استعمال خفيف",
+      "price": 2450,
+      "compareAtPrice": 3200,
+      "stock": 1,
+      "description": "قطعة أصلية منتقاة بعناية. Air Jordan 1 High باللون Chicago الأيقوني: أبيض، أسود وأحمر. الجلد نقي، الألوان باقية واعرة والاستعمال خفيف. المقاس 42 أوروبي. هاد السبرديل للناس اللي كيبغيو الكلاسيك وما كيقبلوش التقليد.",
+      "images": [
+        {
+          "url": "/uploads/1794084329954-jzva94.jpeg",
+          "alt": "Nike Air Jordan 1 High Chicago — صورة 1"
+        }
+      ],
+      "videos": [],
+      "seo": {
+        "title": "Nike Air Jordan 1 Retro High OG Chicago سبرديل مستعمل أصلي | هميزات البال",
+        "description": "Nike Air Jordan 1 High Chicago، من Nike، موديل Air Jordan 1 Retro High OG Chicago، المقاس 42 EU، الحالة 8.5/10. سبرديل مستعمل أصلي قطعة أصلية مستعملة منتقاة بعناية من هميزات البال في المغرب.",
+        "keywords": "Nike, Air Jordan 1 Retro High OG Chicago, Nike Air Jordan 1 High Chicago, سبرديل مستعمل أصلي, سبرديلات مستعملة, هميزات البال, ماركات أصلية, المغرب, كازا"
+      },
+      "status": "active",
+      "createdAt": "2026-11-07T20:22:25.281Z",
+      "updatedAt": "2026-11-07T20:45:32.801Z"
+    },
+    {
+      "id": "p-adidas-samba",
+      "slug": "adidas-samba-og",
+      "category": "sneakers",
+      "name": "Adidas Samba OG",
+      "brand": "Adidas",
+      "model": "Samba OG White Black Gum",
+      "size": "43 EU",
+      "condition": "9/10 — شبه جديدة",
+      "price": 950,
+      "compareAtPrice": 1400,
+      "stock": 1,
+      "description": "Adidas Samba OG بيضاء بالخطوط السوداء والنعل الكام. استعمال خفيف جداً، القطعة شبه جديدة. المقاس 43. سبرديل يومي وأنيق في نفس الوقت، أصلي 100% ومنتقى للناس اللي كتعرف القيمة.",
+      "images": [
+        {
+          "url": "/uploads/1794084345310-mcz533.jpeg",
+          "alt": "Adidas Samba OG — صورة 1"
+        }
+      ],
+      "videos": [
+        {
+          "url": "/uploads/1794084364710-266kpe.mp4",
+          "kind": "file"
+        }
+      ],
+      "seo": {
+        "title": "Adidas Samba OG White Black Gum سبرديل مستعمل أصلي | هميزات البال",
+        "description": "Adidas Samba OG، من Adidas، موديل Samba OG White Black Gum، المقاس 43 EU، الحالة 9/10. سبرديل مستعمل أصلي قطعة أصلية مستعملة منتقاة بعناية من هميزات البال في المغرب.",
+        "keywords": "Adidas, Samba OG White Black Gum, Adidas Samba OG, سبرديل مستعمل أصلي, سبرديلات مستعملة, هميزات البال, ماركات أصلية, المغرب, كازا"
+      },
+      "status": "active",
+      "createdAt": "2026-11-07T20:22:25.281Z",
+      "updatedAt": "2026-11-07T20:46:07.830Z"
+    },
+    {
+      "id": "p-lv-neverfull",
+      "slug": "louis-vuitton-speedy-30",
+      "category": "bags",
+      "name": "Louis Vuitton Speedy 30",
+      "brand": "Louis Vuitton",
+      "model": "Speedy 30 Monogram",
+      "size": "30",
+      "condition": "8/10 — باتينا طبيعية زوينة",
+      "price": 4900,
+      "compareAtPrice": 7200,
+      "stock": 1,
+      "description": "Louis Vuitton Speedy 30 أصلية مستعملة. الكانفاس نقي والجلد فيه باتينا طبيعية كتعطي للساك هيبة. أيقونة عملية للخروج والسفر. قطعة واحدة فقط.",
+      "images": [
+        {
+          "url": "/uploads/1794084415388-3ki8cj.jpeg",
+          "alt": "Louis Vuitton Speedy 30 — صورة 1"
+        }
+      ],
+      "videos": [],
+      "seo": {
+        "title": "Louis Vuitton Speedy 30 Monogram ساك مستعمل أصلي | هميزات البال",
+        "description": "Louis Vuitton Speedy 30، من Louis Vuitton، موديل Speedy 30 Monogram، الحالة 8/10. ساك مستعمل أصلي قطعة أصلية مستعملة منتقاة بعناية من هميزات البال في المغرب.",
+        "keywords": "Louis Vuitton, Speedy 30 Monogram, Louis Vuitton Speedy 30, ساك مستعمل أصلي, سيكان مستعملة, هميزات البال, ماركات أصلية, المغرب, كازا"
+      },
+      "status": "active",
+      "createdAt": "2026-11-07T20:22:25.281Z",
+      "updatedAt": "2026-11-07T20:46:57.676Z"
+    },
+    {
+      "id": "p-chanel-flap",
+      "slug": "gucci-gg-marmont",
+      "category": "bags",
+      "name": "Gucci GG Marmont",
+      "brand": "Gucci",
+      "model": "GG Marmont Small Matelassé",
+      "size": "Small",
+      "condition": "8.5/10 — محافظة على هيبتها",
+      "price": 3900,
+      "compareAtPrice": 6200,
+      "stock": 1,
+      "description": "Gucci GG Marmont أصلية مستعملة. الكيلتينغ المضلع، الجلد الأسود والشعار الذهبي. استعمال محترم والقطعة محافظة على فخامتها. ساك أيقوني للناس اللي كيبغيو الماركات الواعرة بلا ما يشريو جديد.",
+      "images": [
+        {
+          "url": "/uploads/1794084430278-8w7op3.jpeg",
+          "alt": "Gucci GG Marmont — صورة 1"
+        }
+      ],
+      "videos": [],
+      "seo": {
+        "title": "Gucci GG Marmont Small Matelassé ساك مستعمل أصلي | هميزات البال",
+        "description": "Gucci GG Marmont، من Gucci، موديل GG Marmont Small Matelassé، الحالة 8.5/10. ساك مستعمل أصلي قطعة أصلية مستعملة منتقاة بعناية من هميزات البال في المغرب.",
+        "keywords": "Gucci, GG Marmont Small Matelassé, Gucci GG Marmont, ساك مستعمل أصلي, سيكان مستعملة, هميزات البال, ماركات أصلية, المغرب, كازا"
+      },
+      "status": "active",
+      "createdAt": "2026-11-07T20:22:25.281Z",
+      "updatedAt": "2026-11-07T20:47:11.661Z"
+    }
+  ],
+  "orders": [
+    {
+      "id": "1313dc2d-07ec-46cf-b8a0-bf4afb4093f0",
+      "number": "HB-2026-0001",
+      "productId": "p-jordan-chicago",
+      "productName": "Nike Air Jordan 1 High Chicago",
+      "productImage": "/products/jordan-chicago-hero.jpg",
+      "price": 2450,
+      "customer": {
+        "name": "يوسف العلوي",
+        "phone": "0612345678",
+        "city": "الدار البيضاء"
+      },
+      "status": "pending",
+      "note": "",
+      "createdAt": "2026-11-07T20:25:06.911Z",
+      "updatedAt": "2026-11-07T20:25:06.911Z"
+    }
+  ],
+  "notifications": [
+    {
+      "id": "247fcf36-49b5-4f87-b647-b1a24b515765",
+      "title": "كوموند جديدة",
+      "body": "يوسف العلوي من الدار البيضاء دوز طلب Nike Air Jordan 1 High Chicago — HB-2026-0001",
+      "orderId": "1313dc2d-07ec-46cf-b8a0-bf4afb4093f0",
+      "read": true,
+      "createdAt": "2026-11-07T20:25:06.911Z"
+    }
+  ]
+}
