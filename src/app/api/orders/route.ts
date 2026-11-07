@@ -3,7 +3,9 @@ import { updateStore } from "@/lib/db";
 import { isValidMoroccanPhone, normalizePhone } from "@/lib/format";
 import { notifyOwner } from "@/lib/notify";
 import type { Order } from "@/lib/types";
-import { NextResponse } from "next/server";
+import { after, NextResponse } from "next/server";
+
+export const maxDuration = 60;
 
 export async function GET() {
   if (!(await isAdmin())) {
@@ -65,8 +67,10 @@ export async function POST(request: Request) {
       return { order: created, settings: store.settings };
     });
 
-    const notify = await notifyOwner(settings, order);
-    return NextResponse.json({ order, notify });
+    after(async () => {
+      await notifyOwner(settings, order);
+    });
+    return NextResponse.json({ order });
   } catch (error) {
     const status = (error as Error & { status?: number }).status || 500;
     return NextResponse.json({ error: error instanceof Error ? error.message : "خطأ" }, { status });

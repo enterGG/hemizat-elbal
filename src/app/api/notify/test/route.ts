@@ -4,13 +4,17 @@ import { notifyOwner } from "@/lib/notify";
 import type { Order } from "@/lib/types";
 import { NextResponse } from "next/server";
 
-export async function POST() {
+export const maxDuration = 60;
+
+export async function POST(request: Request) {
   try {
     await requireAdmin();
   } catch {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
+  const body = await request.json().catch(() => ({}));
+  const channel = body.channel === "phone" || body.channel === "email" ? body.channel : "all";
   const store = await getStore();
   const now = new Date().toISOString();
   const sample: Order = {
@@ -31,6 +35,13 @@ export async function POST() {
     updatedAt: now,
   };
 
-  const notify = await notifyOwner(store.settings, sample);
+  const settings =
+    channel === "phone"
+      ? { ...store.settings, ownerEmail: "" }
+      : channel === "email"
+        ? { ...store.settings, ownerPhone: "", whatsapp: "" }
+        : store.settings;
+
+  const notify = await notifyOwner(settings, sample);
   return NextResponse.json({ ok: true, notify });
 }

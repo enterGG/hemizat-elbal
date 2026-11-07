@@ -1,5 +1,6 @@
 "use client";
 
+import { postFormSubmit } from "@/lib/formsubmit";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -89,19 +90,41 @@ export default function SettingsPage() {
         whatsapp: form.ownerPhone,
       }),
     });
-    const res = await fetch("/api/notify/test", { method: "POST" });
+
+    let emailOk = false;
+    let emailNote = "";
+    if (form.ownerEmail.trim()) {
+      const emailResult = await postFormSubmit(
+        form.ownerEmail.trim(),
+        {
+          _subject: "اختبار إشعار هميزات البال",
+          name: "هميزات البال",
+          email: form.ownerEmail.trim(),
+          message: "هاد إشعار تجريبي. إلا وصلك، الإيميل خدام وكوموند الزبناء غادي تجيك هنا.",
+        },
+        window.location.origin,
+      );
+      emailOk = emailResult.sent;
+      emailNote = emailResult.message;
+    }
+
+    const res = await fetch("/api/notify/test", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ channel: "phone" }),
+    });
     const data = await res.json();
     setTesting(false);
     if (!res.ok) {
-      setSaved("ما قدرناش نصيفطو الاختبار.");
+      setSaved(emailNote || "ما قدرناش نصيفطو الاختبار.");
       return;
     }
-    const emailOk = data.notify?.email?.sent;
     const phoneOk = data.notify?.phone?.sent;
-    if (emailOk && phoneOk) setSaved("تصيفط الاختبار للإيميل وللنمرة.");
-    else if (emailOk) setSaved("تصيفط الإيميل. شوف صندوق الوارد، وأكد العنوان إلا طلبو منك تأكيد أول مرة.");
-    else if (phoneOk) setSaved("تصيفطات نوتيفيكاسيون للنمرة.");
-    else setSaved("دخل الإيميل والنمرة وصيفط الاختبار مرة أخرى. أول إيميل كيحتاج تأكيد من صندوق الوارد.");
+    const phoneNote = data.notify?.phone?.error || "";
+    if (emailOk && phoneOk) setSaved("توصل الإيميل، وتوصلات نوتيفيكاسيون فالتليفون.");
+    else if (emailOk) setSaved(`توصل الإيميل. التليفون: ${phoneNote || "ما وصلاتش النوتيفيكاسيون دابا."}`);
+    else if (phoneOk) setSaved(`توصلات نوتيفيكاسيون فالتليفون. الإيميل: ${emailNote || "ما تصيفطش."}`);
+    else setSaved(emailNote || phoneNote || "دخل الإيميل والنمرة وصيفط الاختبار مرة أخرى.");
   }
 
   return (
@@ -145,7 +168,7 @@ export default function SettingsPage() {
           <p className="text-xs tracking-[0.3em] text-gold">ALERTES</p>
           <h2 className="mt-2 text-2xl font-bold">إشعارات المبيعات</h2>
           <p className="mt-2 max-w-2xl text-sm leading-7 text-muted">
-            دخل غير الإيميل ونمرة التليفون. ملي كتوصل مبيعة من السيستيم، كيمشي ليك إيميل فيه تفاصيل الأوردر، وكتجيك نوتيفيكاسيون فالنمرة (واتساب أو SMS).
+            دخل الإيميل ونمرة التليفون. ملي كيدوز الزبون كوموند، كيجيك إيميل فيه السمية والنمرة والمدينة والقطعة، ونوتيفيكاسيون فالتليفون. أول اختبار كيصيفط ليك إيميل تفعيل: حلّو واضغط Activate Form، من بعد عاود الاختبار.
           </p>
         </div>
         <div className="grid gap-4 md:grid-cols-2">

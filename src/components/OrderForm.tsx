@@ -6,7 +6,6 @@ import { useState } from "react";
 
 export default function OrderForm({
   productId,
-  productName,
   inStock,
 }: {
   productId: string;
@@ -19,32 +18,46 @@ export default function OrderForm({
   const [city, setCity] = useState("");
   const [otherCity, setOtherCity] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  function submit(event: React.FormEvent) {
+  async function submit(event: React.FormEvent) {
     event.preventDefault();
     const chosenCity = city === "مدينة أخرى" ? otherCity.trim() : city;
     if (name.trim().length < 2) return setError("كتب الاسم الكامل.");
     if (!isValidMoroccanPhone(phone)) return setError("رقم الهاتف المغربي غير صحيح.");
     if (!chosenCity) return setError("اختار المدينة.");
-    const params = new URLSearchParams({
-      productId,
-      name: name.trim(),
-      phone: phone.trim(),
-      city: chosenCity,
+
+    setLoading(true);
+    setError("");
+    const res = await fetch("/api/orders", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        productId,
+        customer: { name: name.trim(), phone: phone.trim(), city: chosenCity },
+      }),
     });
-    try {
-      sessionStorage.setItem(
-        "hemizat-checkout",
-        JSON.stringify({
-          productId,
-          productName,
-          customer: { name: name.trim(), phone: phone.trim(), city: chosenCity },
-        }),
-      );
-    } catch {
-      /* ignore */
+    const data = await res.json();
+    setLoading(false);
+    if (!res.ok) {
+      setError(data.error || "ما تسجلاتش الكوموند. عاود من بعد.");
+      return;
     }
-    router.push(`/checkout?${params.toString()}`);
+
+    const order = data.order as {
+      productName: string;
+      productImage?: string;
+      price: number;
+      customer: { name: string; city: string };
+    };
+    const params = new URLSearchParams({
+      name: order.customer.name,
+      city: order.customer.city,
+      product: order.productName,
+      price: String(order.price),
+      image: order.productImage || "",
+    });
+    router.push(`/order-success?${params.toString()}`);
   }
 
   if (!inStock) {
@@ -59,16 +72,14 @@ export default function OrderForm({
     <form onSubmit={submit} className="card space-y-4 p-6">
       <div>
         <h2 className="text-xl font-bold">بغيت هاد القطعة</h2>
-        <p className="mt-1 text-sm text-muted">
-          عمّر الاسم، رقم الهاتف والمدينة. من بعد غادي نأكدو الطلب فالتشيك أوت.
-        </p>
+        <p className="mt-1 text-sm text-muted">كتب السمية، نمرة التليفون، واختار المدينة، ودير تم.</p>
       </div>
       <label className="block space-y-2">
-        <span>الاسم</span>
+        <span>السمية</span>
         <input className="field" value={name} onChange={(e) => setName(e.target.value)} placeholder="الاسم الكامل" />
       </label>
       <label className="block space-y-2">
-        <span>رقم الهاتف</span>
+        <span>نمرة التليفون</span>
         <input
           className="field"
           value={phone}
@@ -97,8 +108,8 @@ export default function OrderForm({
         />
       ) : null}
       {error ? <p className="text-sm text-[var(--danger)]">{error}</p> : null}
-      <button type="submit" className="gold-btn w-full rounded-full py-3">
-        إتمام الطلب
+      <button type="submit" className="gold-btn w-full rounded-full py-3" disabled={loading}>
+        {loading ? "كنسجلو الكوموند..." : "تم"}
       </button>
     </form>
   );
