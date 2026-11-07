@@ -1,5 +1,6 @@
 import { promises as fs } from "fs";
 import path from "path";
+import { defaultCategories, DEFAULT_CATEGORY_STYLE, migrateStoreShape } from "./categories";
 import { generateSeo, slugify } from "./seo";
 import type { Product, StoreData } from "./types";
 
@@ -179,7 +180,9 @@ function seed(): StoreData {
       adminPassword: "hemizat2026",
       smtp: { host: "", port: 587, user: "", pass: "", from: "" },
       orderSeq: 1,
+      categoryStyle: { ...DEFAULT_CATEGORY_STYLE },
     },
+    categories: defaultCategories(),
     products: seedProducts(),
     orders: [],
     notifications: [],
@@ -207,6 +210,14 @@ export async function getStore(): Promise<StoreData> {
     const raw = await fs.readFile(dbPath, "utf8");
     const store = JSON.parse(raw) as StoreData;
     if (!store.settings.logoUrl) store.settings.logoUrl = "/branding/logo.jpg";
+    const changed = migrateStoreShape(store);
+    if (changed) {
+      try {
+        await fs.writeFile(dbPath, JSON.stringify(store, null, 2), "utf8");
+      } catch {
+        // Read-only hosts still get the migrated in-memory store.
+      }
+    }
     return store;
   } catch {
     return seed();

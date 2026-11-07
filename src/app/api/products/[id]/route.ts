@@ -30,7 +30,10 @@ export async function PUT(request: Request, { params }: Ctx) {
       const stock = Number(body.stock ?? current.stock);
       const next: Product = {
         ...current,
-        category: body.category === "bags" ? "bags" : body.category === "sneakers" ? "sneakers" : current.category,
+        category:
+          body.category && store.categories.some((item) => item.slug === body.category)
+            ? String(body.category)
+            : current.category,
         name: String(body.name ?? current.name),
         brand: String(body.brand ?? current.brand),
         model: String(body.model ?? current.model),

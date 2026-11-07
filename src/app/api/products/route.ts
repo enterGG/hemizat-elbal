@@ -29,7 +29,11 @@ export async function POST(request: Request) {
 
   const body = await request.json();
   const product = await updateStore((store) => {
-    const category: Category = body.category === "bags" ? "bags" : "sneakers";
+    const requested = String(body.category || "").trim();
+    const category: Category =
+      store.categories.some((item) => item.slug === requested)
+        ? requested
+        : store.categories[0]?.slug || "sneakers";
     const stock = Number(body.stock ?? 1);
     const now = new Date().toISOString();
     const created: Product = {

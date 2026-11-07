@@ -1,7 +1,7 @@
 "use client";
 
 import { generateSeo, slugify } from "@/lib/seo";
-import type { Category, MediaImage, MediaVideo, Product, SeoFields } from "@/lib/types";
+import type { Category, MediaImage, MediaVideo, Product, SeoFields, StoreCategory } from "@/lib/types";
 import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 
@@ -23,9 +23,9 @@ type FormState = {
   status: "active" | "draft";
 };
 
-function fromProduct(product?: Product): FormState {
+function fromProduct(product: Product | undefined, categories: StoreCategory[]): FormState {
   return {
-    category: product?.category || "sneakers",
+    category: product?.category || categories[0]?.slug || "sneakers",
     name: product?.name || "",
     brand: product?.brand || "",
     model: product?.model || "",
@@ -43,9 +43,15 @@ function fromProduct(product?: Product): FormState {
   };
 }
 
-export default function ProductForm({ product }: { product?: Product }) {
+export default function ProductForm({
+  product,
+  categories,
+}: {
+  product?: Product;
+  categories: StoreCategory[];
+}) {
   const router = useRouter();
-  const [form, setForm] = useState<FormState>(() => fromProduct(product));
+  const [form, setForm] = useState<FormState>(() => fromProduct(product, categories));
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
 
@@ -131,8 +137,11 @@ export default function ProductForm({ product }: { product?: Product }) {
         <label className="space-y-2">
           <span>النوع</span>
           <select className="field" value={form.category} onChange={(e) => set("category", e.target.value as Category)}>
-            <option value="sneakers">سبرديل</option>
-            <option value="bags">ساك</option>
+            {categories.map((category) => (
+              <option key={category.id} value={category.slug}>
+                {category.name}
+              </option>
+            ))}
           </select>
         </label>
         <label className="space-y-2">

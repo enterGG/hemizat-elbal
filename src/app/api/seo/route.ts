@@ -10,7 +10,7 @@ export async function POST(request: Request) {
       model: body.model || "",
       size: body.size || "",
       condition: body.condition || "",
-      category: body.category === "bags" ? "bags" : "sneakers",
+      category: String(body.category || "sneakers"),
       description: body.description || "",
     }),
     slug: body.name || body.model || "",

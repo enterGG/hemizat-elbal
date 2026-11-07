@@ -1,4 +1,27 @@
-export type Category = "sneakers" | "bags";
+export type Category = string;
+
+export type CategoryShape = "square" | "rectangle" | "triangle" | "star" | "circle" | "hexagon";
+export type CategoryCorners = "sharp" | "rounded" | "soft";
+export type CategoryGlow = "off" | "soft" | "strong";
+export type CategoryFrame = "none" | "gold" | "double";
+
+export type CategoryStyle = {
+  shape: CategoryShape;
+  corners: CategoryCorners;
+  glow: CategoryGlow;
+  frame: CategoryFrame;
+};
+
+export type StoreCategory = {
+  id: string;
+  slug: string;
+  name: string;
+  description: string;
+  logoUrl: string;
+  imageUrl: string;
+  order: number;
+  createdAt: string;
+};
 
 export type ProductStatus = "active" | "draft" | "sold";
 
@@ -81,6 +104,7 @@ export type Settings = {
   adminPassword: string;
   smtp: SmtpSettings;
   orderSeq: number;
+  categoryStyle: CategoryStyle;
 };
 
 export type AppNotification = {
@@ -94,6 +118,7 @@ export type AppNotification = {
 
 export type StoreData = {
   settings: Settings;
+  categories: StoreCategory[];
   products: Product[];
   orders: Order[];
   notifications: AppNotification[];

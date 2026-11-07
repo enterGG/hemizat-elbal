@@ -16,7 +16,13 @@
       "pass": "",
       "from": ""
     },
-    "orderSeq": 2
+    "orderSeq": 2,
+    "categoryStyle": {
+      "shape": "rectangle",
+      "corners": "rounded",
+      "glow": "off",
+      "frame": "none"
+    }
   },
   "products": [
     {
@@ -226,6 +232,28 @@
       "orderId": "1313dc2d-07ec-46cf-b8a0-bf4afb4093f0",
       "read": true,
       "createdAt": "2026-11-07T20:25:06.911Z"
+    }
+  ],
+  "categories": [
+    {
+      "id": "cat-sneakers",
+      "slug": "sneakers",
+      "name": "السبرديلات",
+      "description": "سبرديلات أصلية مستعملة من الماركات الواعرة. كل قطعة بوحدها، بالمقاس والحالة والتصاور الحقيقية.",
+      "logoUrl": "",
+      "imageUrl": "/products/jordan-chicago-hero.jpg",
+      "order": 1,
+      "createdAt": "2026-11-07T21:36:10.421Z"
+    },
+    {
+      "id": "cat-bags",
+      "slug": "bags",
+      "name": "السيكان",
+      "description": "سيكان فخمة أصلية مستعملة. الحالة واضحة، القطعة كتمشي لواحد، بلا زواق زايد.",
+      "logoUrl": "",
+      "imageUrl": "/products/lv-neverfull-hero.jpg",
+      "order": 2,
+      "createdAt": "2026-11-07T21:36:10.421Z"
     }
   ]
 }

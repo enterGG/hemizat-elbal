@@ -46,7 +46,7 @@ export default async function ProductPage({ params }: Props) {
           <div>
             <p className="text-xs tracking-[0.3em] text-gold">{product.brand}</p>
             <h1 className="mt-2 text-4xl font-extrabold">{product.name}</h1>
-            <p className="mt-2 text-muted">{categoryLabel(product.category)} · {product.model}</p>
+            <p className="mt-2 text-muted">{categoryLabel(product.category, store.categories)} · {product.model}</p>
           </div>
           <div className="flex items-end gap-3">
             <span className="text-3xl font-extrabold text-gold-2">{formatPrice(product.price)}</span>

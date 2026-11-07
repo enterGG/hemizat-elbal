@@ -1,11 +1,18 @@
-import type { Category, Product, SeoFields } from "./types";
+import type { Category, Product, SeoFields, StoreCategory } from "./types";
 
-export function categoryLabel(category: Category) {
-  return category === "sneakers" ? "سبرديل مستعمل أصلي" : "ساك مستعمل أصلي";
+export function categoryLabel(category: Category, categories?: StoreCategory[]) {
+  const name = categoryName(category, categories);
+  if (category === "sneakers") return "سبرديل مستعمل أصلي";
+  if (category === "bags") return "ساك مستعمل أصلي";
+  return `${name} أصلي مستعمل`;
 }
 
-export function categoryName(category: Category) {
-  return category === "sneakers" ? "السبرديلات" : "السيكان";
+export function categoryName(category: Category, categories?: StoreCategory[]) {
+  const found = categories?.find((item) => item.slug === category);
+  if (found?.name) return found.name;
+  if (category === "sneakers") return "السبرديلات";
+  if (category === "bags") return "السيكان";
+  return category;
 }
 
 export function slugify(value: string) {
@@ -56,7 +63,7 @@ export function generateSeo(input: {
     input.model,
     input.name,
     kind,
-    input.category === "sneakers" ? "سبرديلات مستعملة" : "سيكان مستعملة",
+    input.category === "sneakers" ? "سبرديلات مستعملة" : input.category === "bags" ? "سيكان مستعملة" : `${categoryName(input.category)} مستعملة`,
     "هميزات البال",
     "ماركات أصلية",
     "المغرب",

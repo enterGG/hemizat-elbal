@@ -1,3 +1,4 @@
+import { categoryHref } from "@/lib/categories";
 import { getStore, publicProduct } from "@/lib/db";
 import type { MetadataRoute } from "next";
 
@@ -7,5 +8,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     url: `/product/${product.slug}`,
     lastModified: product.updatedAt,
   }));
-  return [{ url: "/" }, { url: "/sneakers" }, { url: "/bags" }, ...products];
+  const categories = store.categories.map((category) => ({
+    url: categoryHref(category.slug),
+  }));
+  return [{ url: "/" }, ...categories, ...products];
 }

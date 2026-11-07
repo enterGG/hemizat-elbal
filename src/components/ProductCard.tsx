@@ -1,9 +1,15 @@
 import Link from "next/link";
 import { formatPrice } from "@/lib/format";
 import { categoryName } from "@/lib/seo";
-import type { Product } from "@/lib/types";
+import type { Product, StoreCategory } from "@/lib/types";
 
-export default function ProductCard({ product }: { product: Product }) {
+export default function ProductCard({
+  product,
+  categories,
+}: {
+  product: Product;
+  categories?: StoreCategory[];
+}) {
   const image = product.images[0];
 
   return (
@@ -20,7 +26,7 @@ export default function ProductCard({ product }: { product: Product }) {
           <div className="flex h-full items-center justify-center text-muted">بدون صورة</div>
         )}
         <div className="absolute right-2 top-2 rounded-full bg-black/70 px-2 py-0.5 text-[10px] text-gold">
-          {categoryName(product.category)}
+          {categoryName(product.category, categories)}
         </div>
         {product.stock === 1 ? (
           <div className="absolute left-2 top-2 rounded-full bg-gold px-2 py-0.5 text-[10px] font-bold text-[#1a140c]">

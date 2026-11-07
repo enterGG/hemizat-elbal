@@ -29,7 +29,7 @@ export default async function ProductsPage() {
               ) : null}
             </div>
             <div className="space-y-1 p-4">
-              <div className="text-xs text-gold">{categoryName(product.category)}</div>
+              <div className="text-xs text-gold">{categoryName(product.category, store.categories)}</div>
               <div className="font-bold">{product.name}</div>
               <div className="text-sm text-muted">
                 {formatPrice(product.price)} · ستوك {product.stock} · {product.status === "sold" || product.stock <= 0 ? "تباع" : product.status === "draft" ? "مسودة" : "معروض"}

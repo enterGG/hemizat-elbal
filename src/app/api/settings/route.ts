@@ -35,6 +35,19 @@ export async function PUT(request: Request) {
     store.settings.webhookUrl = body.webhookUrl ?? store.settings.webhookUrl;
     store.settings.callmebotKey = body.callmebotKey ?? store.settings.callmebotKey;
     if (body.adminPassword) store.settings.adminPassword = String(body.adminPassword);
+    if (body.categoryStyle) {
+      const current = store.settings.categoryStyle;
+      const shape = body.categoryStyle.shape;
+      const corners = body.categoryStyle.corners;
+      const glow = body.categoryStyle.glow;
+      const frame = body.categoryStyle.frame;
+      store.settings.categoryStyle = {
+        shape: ["square", "rectangle", "triangle", "star", "circle", "hexagon"].includes(shape) ? shape : current.shape,
+        corners: ["sharp", "rounded", "soft"].includes(corners) ? corners : current.corners,
+        glow: ["off", "soft", "strong"].includes(glow) ? glow : current.glow,
+        frame: ["none", "gold", "double"].includes(frame) ? frame : current.frame,
+      };
+    }
     store.settings.smtp = {
       host: body.smtp?.host ?? store.settings.smtp.host,
       port: Number(body.smtp?.port ?? store.settings.smtp.port),

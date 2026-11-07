@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 const nav = [
   { href: "/admin/dashboard", label: "لوحة التحكم" },
   { href: "/admin/products", label: "المنتوجات" },
+  { href: "/admin/categories", label: "التصنيفات" },
   { href: "/admin/orders", label: "الطلبات" },
   { href: "/admin/settings", label: "إعدادات الستور" },
 ];

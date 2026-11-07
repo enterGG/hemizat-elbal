@@ -168,3 +168,64 @@ button {
 .intro-leave {
   animation: overlay-out 0.9s ease forwards;
 }
+
+.rtl-cat-row {
+  display: flex;
+  flex-direction: row;
+  gap: 0.85rem;
+  overflow-x: auto;
+  padding-bottom: 0.4rem;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold) transparent;
+}
+
+.rtl-cat-row > * {
+  flex: 0 0 auto;
+  width: min(18.5rem, calc(50vw - 1.6rem));
+  scroll-snap-align: start;
+}
+
+@media (min-width: 640px) {
+  .rtl-cat-row {
+    gap: 1.25rem;
+  }
+
+  .rtl-cat-row > * {
+    width: min(20rem, calc(50vw - 2.5rem));
+  }
+}
+
+@media (min-width: 1024px) {
+  .rtl-cat-row > * {
+    width: min(19rem, 30%);
+  }
+}
+
+.cat-clip-triangle {
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.cat-clip-star {
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+.cat-clip-circle {
+  clip-path: circle(50% at 50% 50%);
+}
+
+.cat-clip-hex {
+  clip-path: polygon(25% 6%, 75% 6%, 100% 50%, 75% 94%, 25% 94%, 0% 50%);
+}
+
+.cat-glow-soft {
+  filter: drop-shadow(0 0 12px rgba(212, 175, 109, 0.55));
+}
+
+.cat-glow-strong {
+  filter: drop-shadow(0 0 6px rgba(240, 217, 166, 0.95)) drop-shadow(0 0 22px rgba(212, 175, 109, 0.72));
+}
+
+.cat-frame-double {
+  box-shadow: 0 0 0 4px #070707, 0 0 0 6px var(--gold);
+}
